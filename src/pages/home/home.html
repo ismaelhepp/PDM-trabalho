@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <button ion-button (click)="readCode()">Scan QR code</button>
+  </ion-item>
+  <ion-item>
+    <form (ngSubmit)="insert" #formulario="ngForm">
+      <ion-label stacked>Nome</ion-label>
+      <ion-input [(ngModel)]="nome" name="nome" type="text"></ion-input>
+    </form>
+      <button ion-button (click)="formulario.ngSubmit.emit()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of mensagens"
+      (click)="info(item.id)">
+      <p>{{item.id}} - {{item.frase}}<br>
+      Inserido em : {{item.dataHora | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
